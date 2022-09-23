@@ -1,0 +1,14 @@
+blomstra-fathom-analytics:
+  admin:
+    settings:
+      site_id_label: Site ID
+      site_id_help: Enter your Fathom site ID
+
+      event_list:
+        toggle_event_enabled: Enable or disable tracking of this event
+        event_id: Event ID
+
+        save: => core.ref.save_changes
+
+    events:
+      heading: Event configuration
