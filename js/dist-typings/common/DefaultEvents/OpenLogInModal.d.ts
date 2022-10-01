@@ -1,8 +1,3 @@
 import { FathomEvent } from '../EventsRepository';
-declare const _default: {
-    name: string;
-    description: string;
-    id: string;
-    code(e: FathomEvent): void;
-};
+declare const _default: FathomEvent;
 export default _default;
