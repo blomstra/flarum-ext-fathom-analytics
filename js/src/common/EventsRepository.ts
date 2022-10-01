@@ -96,7 +96,7 @@ export class EventsRepository {
     return this.getAllEvents().filter((event) => eventIds.has(event.id));
   }
 
-  isEventEnabled(eventId: string) {
+  isEventEnabled(eventId: string): boolean {
     return this.getEnabledEventIDs().includes(eventId);
   }
 
@@ -117,7 +117,7 @@ export class EventsRepository {
     return JSON.parse(JSON.stringify(val));
   }
 
-  propogateServerEventData() {
+  propogateServerEventData(): void {
     const eventData = this.getServerEventData();
 
     this.getAllEvents().forEach((event) => {
@@ -127,7 +127,7 @@ export class EventsRepository {
     });
   }
 
-  async saveServerEventData(eventData: FathomEventAttributeData) {
+  async saveServerEventData(eventData: FathomEventAttributeData): Promise<void> {
     await app.request({
       method: 'POST',
       url: app.forum.attribute('apiUrl') + '/settings',
