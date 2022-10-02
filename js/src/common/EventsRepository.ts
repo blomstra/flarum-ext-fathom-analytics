@@ -78,7 +78,7 @@ export class EventsRepository {
     return Object.values(this.events);
   }
 
-  registerEvent(event: FathomEventParams): void {
+  registerEvent(event: FathomEventParams): EventsRepository {
     this.events[event.id] = {
       ...event,
       fathomEventId: '',
@@ -88,6 +88,8 @@ export class EventsRepository {
         window.fathom.trackGoal(this.fathomEventId, 0);
       },
     };
+
+    return this;
   }
 
   getEnabledEvents(): FathomEvent[] {
