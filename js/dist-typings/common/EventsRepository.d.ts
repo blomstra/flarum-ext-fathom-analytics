@@ -58,7 +58,7 @@ export declare class EventsRepository {
     private events;
     constructor();
     getAllEvents(): FathomEvent[];
-    registerEvent(event: FathomEventParams): void;
+    registerEvent(event: FathomEventParams): EventsRepository;
     getEnabledEvents(): FathomEvent[];
     isEventEnabled(eventId: string): boolean;
     getServerEventData(): FathomEventAttributeData;
