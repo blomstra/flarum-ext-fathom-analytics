@@ -65,13 +65,21 @@ export interface FathomEvent {
    * Log the event to Fathom.
    */
   track: () => void;
+
+  /**
+   * Is this event from an extension?
+   */
+  isExtensionEvent: boolean;
 }
 
 export class EventsRepository {
   private events: Record<string, FathomEvent> = {};
+  private assigningExtensionEvents: boolean = false;
 
   constructor() {
     Object.values(DefaultEvents).forEach((event) => this.registerEvent(event));
+
+    this.assigningExtensionEvents = true;
   }
 
   getAllEvents(): FathomEvent[] {
@@ -91,6 +99,7 @@ export class EventsRepository {
 
         window.fathom.trackGoal(this.fathomEventId, 0);
       },
+      isExtensionEvent: this.assigningExtensionEvents,
     };
 
     return this;
