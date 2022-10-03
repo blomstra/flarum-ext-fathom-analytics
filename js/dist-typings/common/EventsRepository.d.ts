@@ -53,9 +53,14 @@ export interface FathomEvent {
      * Log the event to Fathom.
      */
     track: () => void;
+    /**
+     * Is this event from an extension?
+     */
+    isExtensionEvent: boolean;
 }
 export declare class EventsRepository {
     private events;
+    private assigningExtensionEvents;
     constructor();
     getAllEvents(): FathomEvent[];
     registerEvent(event: FathomEventParams): EventsRepository;

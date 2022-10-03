@@ -1,6 +1,6 @@
 import ExtensionPage, { ExtensionPageAttrs } from 'flarum/admin/components/ExtensionPage';
 import type Mithril from 'mithril';
-import { FathomEventAttributeData } from '../../common/EventsRepository';
+import type { FathomEventAttributeData } from '../../common/EventsRepository';
 interface IAttrs extends ExtensionPageAttrs {
 }
 export default class SettingsPage extends ExtensionPage<IAttrs> {
