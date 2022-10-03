@@ -75,7 +75,11 @@ export class EventsRepository {
   }
 
   getAllEvents(): FathomEvent[] {
-    return Object.values(this.events);
+    const events = Object.values(this.events);
+
+    events.sort((a, b) => a.name.localeCompare(b.name));
+
+    return events;
   }
 
   registerEvent(event: FathomEventParams): EventsRepository {
