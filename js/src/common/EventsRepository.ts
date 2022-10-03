@@ -127,7 +127,7 @@ export class EventsRepository {
     const eventData = this.getServerEventData();
 
     this.getAllEvents().forEach((event) => {
-      const { enabled, eventId } = eventData[event.id] || { enabled: false, eventId: '' };
+      const { eventId } = eventData[event.id] || { eventId: '' };
 
       event.fathomEventId = eventId;
     });
