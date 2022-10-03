@@ -1,10 +1,14 @@
 import app from 'flarum/admin/app';
+
 import ExtensionPage, { ExtensionPageAttrs } from 'flarum/admin/components/ExtensionPage';
 import Switch from 'flarum/common/components/Switch';
 import Button from 'flarum/common/components/Button';
+import Tooltip from 'flarum/common/components/Tooltip';
+import icon from 'flarum/common/helpers/icon';
+import extractText from 'flarum/common/utils/extractText';
 
 import type Mithril from 'mithril';
-import { FathomEventAttributeData } from '../../common/EventsRepository';
+import type { FathomEventAttributeData } from '../../common/EventsRepository';
 
 interface IAttrs extends ExtensionPageAttrs {}
 
@@ -56,7 +60,12 @@ export default class SettingsPage extends ExtensionPage<IAttrs> {
             {app.fathomEventsRepository.getAllEvents().map((event, i) => {
               return (
                 <li className="FathomSettings-eventListItem">
-                  <div className="FathomSettings-eventListItem-name">{event.name}</div>
+                  <div className="FathomSettings-eventListItem-name">
+                    <Tooltip text={extractText(app.translator.trans('blomstra-fathom-analytics.admin.settings.event_list.extension_tooltip'))}>
+                      <span>{event.isExtensionEvent && icon('fas fa-puzzle-piece')}</span>
+                    </Tooltip>{' '}
+                    {event.name}
+                  </div>
                   <div className="FathomSettings-eventListItem-description">{event.description}</div>
 
                   <label htmlFor={`fathom-event-id-${i}`} className="sr-only">
