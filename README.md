@@ -116,6 +116,10 @@ You should import and call this `registerFathomEvents()` function in your `src/a
 >   .registerEvent(MyEvent3);
 > ```
 
+If you build your extension JS, you should see your custom event(s) inside the Fathom Analytics extension settings. Custom events are accompanied by a small plug-in icon to show that they are from another extension.
+
+![](custom_events.png)
+
 ### Typescript support
 
 For Typescript typings support, copy the code below into a new file at `js/src/@types/fathom.d.ts`. Typescript should automatically pick this up and remove those red squiggles under your code:
