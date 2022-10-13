@@ -97,6 +97,11 @@ export class EventsRepository {
       track() {
         if (!this.fathomEventId) return;
 
+        if (!window.fathom) {
+          console.warn(`[Fathom Analytics] Attempted to track Fathom event ${this.fathomEventId} but Fathom is not loaded. Maybe an ad-blocker is being used?`);
+          return;
+        }
+
         window.fathom.trackGoal(this.fathomEventId, 0);
       },
       isExtensionEvent: this.assigningExtensionEvents,
